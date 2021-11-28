@@ -7,6 +7,7 @@ import numpy as np
 from sklearn.metrics import precision_recall_fscore_support
 from sklearn.metrics import accuracy_score
 
+# Function to generate the confusion matrix with percentage entries
 def confusion_matrix(Y_true, Y_pred):
     cm = metrics.confusion_matrix(Y_true, Y_pred)
     percent = np.array(cm, np.float32)
@@ -23,7 +24,7 @@ def confusion_matrix(Y_true, Y_pred):
     plt.xlabel('Predicted label')
     plt.show()
 
-
+# Function to compute the performance evaluation metrics
 def metrics_summary(Y_true, Y_pred):
     accuracy = accuracy_score(Y_true, Y_pred)
     precision, recall, f1, support = precision_recall_fscore_support(Y_true, Y_pred)
@@ -31,7 +32,7 @@ def metrics_summary(Y_true, Y_pred):
     print(f"Mean Accuracy: %0.2f" % (accuracy))
     print(f"Mean Precision: %0.2f" % (precision.mean()))
     print(f"Mean Recall: %0.2f" % (recall.mean()))
-    print(f"Mean F-measure: %0.2f" % (f1.mean()))
+    print(f"Mean F-measure: %0.2f" % (recall.mean()))
     print()
     for i, score in enumerate(recall):
         print(f"Recall for class {i+1}: %0.2f" % (score))
