@@ -2,10 +2,12 @@ import os
 from glob import glob
 import numpy as np
 
+# Function to read the given file path
 def parse_label(file_path):
     name = os.path.basename(file_path)
-    return int(name[5]) #get x from "classx_...."
+    return int(name[5]) # get x from "classx_...."
 
+# Function to parse the given file
 def parse_file(file_path):
     x = []
     with open(file_path, 'r') as f:
@@ -13,6 +15,7 @@ def parse_file(file_path):
             x.append([float(val) for val in line.strip().split(' ')])
     return x
 
+# Function to compile the data from the text files
 def parse_data(root_dir, mode):
     '''
     mode : 'train', 'val', 'test'
@@ -28,7 +31,7 @@ def parse_data(root_dir, mode):
         Y += y_class
     return np.array(X), np.array(Y)
 
-
+# Driver code
 if __name__ == '__main__':
     from pprint import pprint
 
@@ -38,4 +41,3 @@ if __name__ == '__main__':
     X_test, Y_test = parse_data(root_dir, 'test')
 
     print(X_train.shape, Y_train.shape)
-    
