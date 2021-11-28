@@ -31,7 +31,7 @@ def metrics_summary(Y_true, Y_pred):
     print(f"Mean Accuracy: %0.2f" % (accuracy))
     print(f"Mean Precision: %0.2f" % (precision.mean()))
     print(f"Mean Recall: %0.2f" % (recall.mean()))
-    print(f"Mean F-measure: %0.2f" % (recall.mean()))
+    print(f"Mean F-measure: %0.2f" % (f1.mean()))
     print()
     for i, score in enumerate(recall):
         print(f"Recall for class {i+1}: %0.2f" % (score))
